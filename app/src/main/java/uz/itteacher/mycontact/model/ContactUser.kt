@@ -11,7 +11,6 @@ data class ContactUser(
     @ColumnInfo(name = "user_name")
     val userName: String,
     val phone: String,
-    val email: String,
     @ColumnInfo(name = "image_id_res")
     val imageIdRes: String? = null
 )

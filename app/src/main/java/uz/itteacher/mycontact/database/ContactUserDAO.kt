@@ -11,7 +11,7 @@ import uz.itteacher.mycontact.model.ContactUser
 @Dao
 interface ContactUserDAO {
     @Query("SELECT * FROM ContactUser ORDER BY user_name ASC")
-    fun getAll(): Flow<List<ContactUser>>
+    fun getAll(): MutableList<ContactUser>
 
     @Query("SELECT * FROM ContactUser WHERE id = :id")
     fun getById(id: Int): ContactUser
@@ -26,8 +26,7 @@ interface ContactUserDAO {
     @Delete
     fun deleteContactUser(contactUser: ContactUser)
 
-    @Update
-    fun updateContactUser(contactUser: ContactUser)
-
+    @Query("UPDATE ContactUser SET user_name = :user_name, phone = :phone, image_id_res = :image WHERE id = :id")
+    fun updateContactUser(id: Int, user_name: String, phone: String, image: String? = null)
 
 }

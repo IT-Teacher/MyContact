@@ -20,8 +20,9 @@ fun ContactNavigation(
         composable("main") {
             MainContactScreen(navController)
         }
-        composable("create") {
-            CreateContactScreen(navController,
+        composable("create/{id}") {
+            val id = it.arguments?.getString("id")
+            CreateContactScreen(navController, id!!,
                 onSave = { name, phone ->
 
                 })
@@ -29,5 +30,6 @@ fun ContactNavigation(
         composable("history") {
             HistoryScreen(navController)
         }
+
     }
 }
