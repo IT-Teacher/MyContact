@@ -27,8 +27,9 @@ fun ContactNavigation(
 
                 })
         }
-        composable("history") {
-            HistoryScreen(navController)
+        composable("history/{id}") {
+            val id = it.arguments?.getString("id")
+            HistoryScreen(navController, id!!)
         }
 
     }
